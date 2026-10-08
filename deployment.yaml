@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bolajicloud-app-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: bolajicloud-app
+  template:
+    metadata:
+      labels:
+        app: bolajicloud-app
+    spec:
+      containers:
+      - name: bolajicloud-app
+        image: 669076482055.dkr.ecr.eu-west-2.amazonaws.com/bolajidocker-app:1.1
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
